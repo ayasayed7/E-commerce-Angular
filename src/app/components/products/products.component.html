@@ -1,0 +1,35 @@
+<div *ngIf="isLoading" class="loadingScreen position-fixed top-0 bottom-0 start-0 end-0 bg-black d-flex justify-content-center align-items-center">
+  <span class="loader"></span>
+</div>
+<div class="row mt-3">
+
+
+  <div  *ngFor="let product of productList"  class="col-md-2">
+
+
+    <div class="product p-3 cursor-pointer">
+
+      <div [routerLink]="['/product-details',product._id]">
+        <img src="{{product.imageCover}}" class="w-100" alt="">
+        <span class="text-main font-sm">{{product.category.name}}</span>
+        <h3 class="h6 py-2">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>
+
+
+        <div class="d-flex justify-content-between">
+          <span>{{product.price}}EGP</span>
+          <span>
+            <i class="fa fa-star rating-color"></i>
+            {{product.ratingsAverage}}
+          </span>
+        </div>
+      </div>
+
+
+      <button (click)="addProductToCart(product._id)" class="btn bg-main text-white w-100 ">+Add</button>
+
+
+    </div>
+
+
+  </div>
+</div>

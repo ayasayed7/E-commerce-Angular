@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg bg-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="./assets/freshcart-logo.svg" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="isLogIn" class="nav-item">
+          <a class="nav-link"  routerLink="/home" routerLinkActive="bg-main , text-white ">Home</a>
+        </li>
+        <li *ngIf="isLogIn" class="nav-item">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="bg-main , text-white">Cart</a>
+        </li>
+        <li *ngIf="isLogIn" class="nav-item">
+          <a class="nav-link" routerLink="/products" routerLinkActive="bg-main , text-white">Products</a>
+        </li>
+        <li *ngIf="isLogIn" class="nav-item">
+          <a class="nav-link" routerLink="/categories" routerLinkActive="bg-main , text-white">Categories</a>
+        </li>
+        <li *ngIf="isLogIn" class="nav-item">
+          <a class="nav-link" routerLink="/brands" routerLinkActive="bg-main , text-white">Brands</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li *ngIf="!isLogIn" class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="bg-main , text-white">Register</a>
+        </li>
+        <li *ngIf="!isLogIn" class="nav-item">
+          <a class="nav-link" routerLink="login" routerLinkActive="bg-main , text-white">Login</a>
+        </li>
+        <!-- <li (click)="_AuthService.logOut()" *ngIf="isLogIn" class="nav-item">
+          <a class="nav-link cursor-pointer"  routerLinkActive="bg-main , text-white">logOut</a>
+        </li> -->
+        <!-- <li class="nav-item">
+          <a [routerLink]="['/setting']" class="nav-link cursor-pointer" >Settings</a>
+        </li> -->
+
+        <li class="nav-item">
+          <a [routerLink]="['/cart']" class="nav-link cursor-pointer position-relative" >
+            <i class="fa fa-shopping-cart text-main p-2 fa-xl"></i>
+            <span class="badge bg-info position-absolute top-0 end-0">{{_CartService.numOfCartItems.getValue()}}</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link cursor-pointer position-relative" routerLink="/wishlist">
+            <i class="fa-solid fa-heart text-danger p-2 fa-xl"></i>
+            <span class="badge bg-info position-absolute top-0 end-0">{{_WhishlistService.wishList.getValue()}}</span>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Settings -->
+            <i class="fa-solid fa-gear text-main fa-xl"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a role="button" class="dropdown-item" routerLink="/forgetpassword" routerLinkActive="bg-main , text-white">Forget Password</a>
+            </li>
+    
+            <li (click)="_AuthService.logOut()" *ngIf="isLogIn" class="nav-item">
+              <a  role="button" class="dropdown-item "  routerLinkActive="bg-main , text-white">logOut</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>

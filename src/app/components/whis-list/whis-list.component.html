@@ -1,0 +1,35 @@
+<div class="row gy-3 mt-3">
+
+
+  <div *ngFor="let product of productList" class="col-md-2">
+
+
+    <div  class="product p-3 cursor-pointer">
+
+      <i *ngIf="!wishListData.includes($any(product._id))" (click)="addWish(product._id)" class="fa-regular fa-heart heart"></i>
+      
+      <i *ngIf="wishListData.includes($any(product._id))" (click)="removeWish(product._id)" class="fa-solid fa-heart text-danger heart "></i>
+      <div [routerLink]="['/product-details',product._id]">
+        <img src="{{product.imageCover}}" class="w-100" alt="">
+        <span class="text-main font-sm">{{product.category.name}}</span>
+        <h3 class="h6 py-2">{{product.title.split(' ').splice(0,2).join(' ')}}</h3>
+
+
+        <div class="d-flex justify-content-between">
+          <span>{{product.price}}EGP</span>
+          <span>
+            <i class="fa fa-star rating-color"></i>
+            {{product.ratingsAverage}}
+          </span>
+        </div>
+      </div>
+
+
+      <button (click)="addProductToCart(product._id)" class="btn bg-main text-white w-100 ">+Add</button>
+
+
+    </div>
+
+
+  </div>
+</div>
